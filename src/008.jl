@@ -26,7 +26,6 @@
 # greatest product. What is the value of this product?
 
 include("Problems.jl")
-include("sequence.jl")
 
 function p008solution(number::String, adjacent::Integer)::Integer
     array = map(x->parse(Int8, x), split(number, ""))
