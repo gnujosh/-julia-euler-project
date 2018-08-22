@@ -7,10 +7,10 @@
 # four million, find the sum of the even-valued terms.
 
 include("Problems.jl")
-include("sequences.jl")
+include("sequence.jl")
 
-function p002_one(N::Integer=3_999_999)::Integer
-    fibs = fibonacci_bound(N)
+function p002solution1(n::Integer=3_999_999)::Integer
+    fibs = fibonacci_bound(n)
     running_sum = 0
     for val in fibs
         if val % 2 == 0
@@ -20,12 +20,12 @@ function p002_one(N::Integer=3_999_999)::Integer
     return running_sum
 end
 
-function p002_two(N::Integer=3_999_999)::Integer
+function p002solution2(n::Integer=3_999_999)::Integer
     # It is only the 3*k+2 indexes that are even
-    fibs = fibonacci_bound(N)
+    fibs = fibonacci_bound(n)
     return sum(fibs[2:3:length(fibs)])
 end
 
-p002 = Problems.Problem(Dict("one" => p002_one, "two" => p002_two))
+p002 = Problems.Problem(Dict("one" => p002solution1, "two" => p002solution2))
 
 Problems.benchmark(p002, 4000000 - 1)

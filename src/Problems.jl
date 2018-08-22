@@ -8,10 +8,10 @@ end
 
 function benchmark(p::Problem, x...)
     key = collect(keys(p.solutions))[1]
-    println(string("Answer: ", p.solutions[key](x[1])))
+    println(string("Answer: ", p.solutions[key](x...)))
     for problem in p.solutions
         println(string(problem[1], ":"))
-        @time problem[2](x[1])
+        @time problem[2](x...)
     end
 end
 

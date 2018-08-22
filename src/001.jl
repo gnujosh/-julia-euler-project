@@ -5,22 +5,22 @@
 
 include("Problems.jl")
 
-function p001_slow(N::Integer=999)::Integer
+function p001slow(n::Integer=999)::Integer
     total_sum = 0
-    for n in 1:N
-        if n % 3 == 0 || n % 5 == 0
-            total_sum += n
+    for i in 1:n
+        if i % 3 == 0 || i % 5 == 0
+            total_sum += i
         end
     end
     return total_sum
 end
 
-function p001_fast(N::Integer=999)::Integer
-    return  3 * (div(N, 3) + 1)  * div(N, 3) / 2 +
-            5 * (div(N, 5) + 1)  * div(N, 5) / 2 -
-           15 * (div(N, 15) + 1) * div(N, 15) / 2
+function p001fast(n::Integer=999)::Integer
+    return  3 * (div(n, 3) + 1)  * div(n, 3) / 2 +
+            5 * (div(n, 5) + 1)  * div(n, 5) / 2 -
+           15 * (div(n, 15) + 1) * div(n, 15) / 2
 end
 
-p001 = Problems.Problem(Dict("fast" => p001_fast, "slow" => p001_slow))
+p001 = Problems.Problem(Dict("fast" => p001fast, "slow" => p001slow))
 
 Problems.benchmark(p001, 999)
