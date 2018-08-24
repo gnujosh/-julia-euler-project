@@ -5,9 +5,9 @@
 include("Problems.jl")
 include("sequence.jl")
 
+# Run Seive of Eratosthenes to get primes and sum them.
 function p010solution(n::Integer=1_999_999)::Integer
-    res = seive_eratosthenes(n)
-    return sum(res)
+    return sum(seive_eratosthenes(n))
 end
 
 p010 = Problems.Problem(p010solution)

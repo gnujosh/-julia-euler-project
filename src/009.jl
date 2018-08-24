@@ -8,9 +8,11 @@
 
 include("Problems.jl")
 
+# Cycle through (from n down to n/2) to find sets of a and b that satisfy
+# a + b + c = 1000.
 function p009solution(n::Integer=1000)::Integer
 
-    maxval = floor(Integer, n / 2)
+    maxval = fld(n, 2)
     for a = maxval:-1:2
         for b = maxval:-1:2
             c = sqrt(a*a + b*b)
@@ -20,10 +22,11 @@ function p009solution(n::Integer=1000)::Integer
         end
     end
 
+    # Should never happen
     return -1
 end
 
-# Note, there are faster options which use triplet generators
+# Note, there are probably faster options which use triplet generators.
 
 p009 = Problems.Problem(p009solution)
 

@@ -7,12 +7,11 @@
 include("Problems.jl")
 include("factorization.jl")
 
+# Find the number of prime factors for each number between 2 and n.  Store the
+# count of each prime factor, and then take the max number of that prime factor
+# for each number.  Multiply all the factors (exponentiated by their max number)
+# to ensure the result is evenly divisible.
 function p005solution(n::Integer=20)::Integer
-
-    # Find the number of prime factors for each number between 2 and n.  Store
-    # the count of each prime factor, and then take the max number of that
-    # prime factor for each number.  Multiply all the factors (exponentiated by
-    # their max number) to ensure the result is evenly divisible.
     counts = zeros(Integer, n)
     for i in 2:n
         subcounts = Dict{Integer, Integer}()

@@ -3,11 +3,11 @@
 
 include("Problems.jl")
 
+# This is made trivial by using Julia's BigInt builtin.
 function p013solution(input::Array{BigInt,1}, numdigits::Integer=10)::Integer
-
     total = sum(input)
-    totaldigits = ceil(Integer, log10(total))
-    return floor(Integer, total / 10^(totaldigits - numdigits))
+    totaldigits = floor(Integer, log10(total) + 1)
+    return fld(total, 10^(totaldigits - numdigits))
 end
 
 p013 = Problems.Problem(p013solution)

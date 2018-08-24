@@ -9,6 +9,8 @@
 include("Problems.jl")
 include("sequence.jl")
 
+# Brute force solution, cycle through Fibonacci numbers up to 4 mil and sum the
+# even ones.
 function p002solution1(n::Integer=3_999_999)::Integer
     fibs = fibonacci_bound(n)
     running_sum = 0
@@ -20,8 +22,9 @@ function p002solution1(n::Integer=3_999_999)::Integer
     return running_sum
 end
 
+# With a little though, we see that it is only the 3*k+2 Fibonacci numbers that
+# are even, so just sum them.
 function p002solution2(n::Integer=3_999_999)::Integer
-    # It is only the 3*k+2 indexes that are even
     fibs = fibonacci_bound(n)
     return sum(fibs[2:3:length(fibs)])
 end

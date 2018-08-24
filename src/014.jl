@@ -17,15 +17,16 @@
 
 include("Problems.jl")
 
+# Memoization type solution to store intermediate results without recursion.
+# It does end up recalculating some solutions multiple times.
 function p014solution_memoize(num::Integer=500)::Integer
-    # Memoization type solution to store intermediate results
     cache = Dict{Integer, Integer}(1 => 1)
     for k = 2:num
         n = k
         i = 1
         while !haskey(cache, n)
             if n % 2 == 0
-                n = convert(Integer, n / 2)
+                n = fld(n, 2)
             else
                 n = 3 * n + 1
             end
@@ -34,6 +35,7 @@ function p014solution_memoize(num::Integer=500)::Integer
         cache[k] = get(cache, n, 0) + i - 1
     end
 
+    # Find max value
     maxkey, maxvalue = 0, 0
     for (key, value) in cache
         if value > maxvalue
@@ -44,13 +46,13 @@ function p014solution_memoize(num::Integer=500)::Integer
     return maxvalue
 end
 
+# Dynamic programming type solution to store intermediate results
 function collatz!(cache::Dict{Integer, Integer}, n::Integer)::Integer
-    # Dynamic programming type solution to store intermediate results
     if haskey(cache, n)
         return cache[n]
     else
         if n % 2 == 0
-            cache[n] = collatz!(cache, convert(Integer, n / 2)) + 1
+            cache[n] = collatz!(cache, fld(n, 2)) + 1
         else
             cache[n] = collatz!(cache, 3 * n + 1) + 1
         end
@@ -58,12 +60,17 @@ function collatz!(cache::Dict{Integer, Integer}, n::Integer)::Integer
     end
 end
 
+# Recursive type solution to store intermediate results.  Theoretically
+# recalculates no numbers, but recursion adds an overhead.
 function p014solution_recurse(num::Integer=500)::Integer
     cache = Dict{Integer, Integer}(1 => 1)
-    for k = 2:num
-        collatz!(cache, k)
+    for k = num:-1:2
+        if !haskey(cache, k)
+            collatz!(cache, k)
+        end
     end
 
+    # Find max value
     maxkey, maxvalue = 0, 0
     for (key, value) in cache
         if value > maxvalue

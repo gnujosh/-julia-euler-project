@@ -27,6 +27,8 @@
 
 include("Problems.jl")
 
+# Use Julia built-ins to convert string into individual numbers then multiply
+# every adjacent chunck.
 function p008solution(number::String, adjacent::Integer)::Integer
     array = map(x->parse(Int8, x), split(number, ""))
     products = map(x -> prod(array[x:x+adjacent-1]), 1:(length(array)-adjacent+1))
