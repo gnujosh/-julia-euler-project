@@ -25,5 +25,4 @@ end
 
 p017 = Problems.Problem(p017solution)
 
-Problems.benchmark(p017, 1_000 )
-
+Problems.benchmark(p017, 1_000)
