@@ -1,12 +1,12 @@
 """
 Returns an array of the Fibonacci numbers up to a bound n.
 """
-function fibonacci_bound(n::Integer=1000)::Array{Integer}
-    a = 1
-    b = 2
-    fibs = zeros(Integer, 1)
+function fibonacci_bound(n::BigInt=1000)::Array{BigInt}
+    a = BigInt(1)
+    b = BigInt(2)
+    fibs = zeros(BigInt, 1)
     fibs[1] = 1
-    while b < n
+    while a < n
         (a, b) = (b, a + b)
         push!(fibs, a)
     end
@@ -16,10 +16,10 @@ end
 """
 Returns an array of the first n Fibonacci numbers.
 """
-function fibonacci_count(n::Integer=20)::Array{Integer}
-    a = 1
-    b = 2
-    fibs = zeros(Integer, n)
+function fibonacci_count(n::Integer=20)::Array{BigInt}
+    a = BigInt(1)
+    b = BigInt(2)
+    fibs = zeros(BigInt, n)
     fibs[1] = 1
     index = 2
     while index <= n
