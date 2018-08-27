@@ -8,7 +8,7 @@ include("digit.jl")
 include("sequence.jl")
 
 # Treat numbers as strings and test by reversing them.
-function p004string(ndigits::Integer=3)::Integer
+function p004solution_string(ndigits::Integer=3)::Integer
     testnums = sort(unique_products_of_ndigits(ndigits), rev=true)
     for i in testnums
         if ispalindrome_string(i)
@@ -20,7 +20,7 @@ end
 
 # Treat numbers as integers and test by reversing them using modulus and floor
 # to pull out individual digits.
-function p004integer(ndigits::Integer=3)::Integer
+function p004solution_integer(ndigits::Integer=3)::Integer
     testnums = sort(unique_products_of_ndigits(ndigits), rev=true)
     for i in testnums
         if ispalindrome(i)
@@ -31,7 +31,7 @@ function p004integer(ndigits::Integer=3)::Integer
 end
 
 # Same as previous, but no initial list construction using list comprehension.
-function p004integer_fast(ndigits::Integer=3)::Integer
+function p004solution_integer_fast(ndigits::Integer=3)::Integer
     maxnum = 10^ndigits - 1
     minnum = 10^(ndigits - 1) # Can probably assume this can be larger
     maxval = 0
@@ -45,8 +45,8 @@ function p004integer_fast(ndigits::Integer=3)::Integer
     return maxval
 end
 
-p004 = Problems.Problem(Dict("string reversal" => p004string,
-                             "integer math" => p004integer,
-                             "integer math fast" => p004integer_fast))
+p004 = Problems.Problem(Dict("string reversal" => p004solution_string,
+                             "integer math" => p004solution_integer,
+                             "integer math fast" => p004solution_integer_fast))
 
 Problems.benchmark(p004, 3)
