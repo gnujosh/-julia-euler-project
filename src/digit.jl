@@ -13,8 +13,7 @@ operations (floor, mod) to pull out digits
 """
 function ispalindrome_integer(n::Integer)::Bool
 
-    numdigits = floor(Integer, log10(n) + 1)
-    @simd for d in (numdigits - 1):-2:1
+    @simd for d in (ndigits(n) - 1):-2:1
         if fld(n, 10^d) != mod(n, 10)
             return false
         end

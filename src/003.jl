@@ -6,7 +6,7 @@ include("Problems.jl")
 include("factorization.jl")
 
 # Call the prime factors function, return the last.
-function p003solution(n::Integer=600_851_475_143)::Integer
+function p003solution(n::Integer=3)::Integer
     return primefactors(n)[end]
 end
 

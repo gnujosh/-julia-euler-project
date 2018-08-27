@@ -15,14 +15,14 @@
 include("Problems.jl")
 
 # Brute force solution, using Julia built-ins.
-function p006solution_sequence(n::Integer=100)::Integer
+function p006solution_sequence(n::Integer=1)::Integer
     seq = 1:n
     return sum(seq)^2 - sum(seq.^2)
 end
 
 # Closed form solution for the sum of a sequence and the sum of a sequence of
 # squares.
-function p006solution_closedform(n::Integer=100)::Integer
+function p006solution_closedform(n::Integer=1)::Integer
     return (n*(n+1)/2)^2 - (n*(n+1)*(2n+1)/6)
 end
 

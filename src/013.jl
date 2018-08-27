@@ -4,10 +4,9 @@
 include("Problems.jl")
 
 # This is made trivial by using Julia's BigInt builtin.
-function p013solution(input::Array{BigInt,1}, numdigits::Integer=10)::Integer
+function p013solution(input::Array{BigInt,1}=ones(BigInt,3), numdigits::Integer=1)::Integer
     total = sum(input)
-    totaldigits = floor(Integer, log10(total) + 1)
-    return fld(total, 10^(totaldigits - numdigits))
+    return fld(total, BigInt(10)^(ndigits(total) - numdigits))
 end
 
 p013 = Problems.Problem(p013solution)

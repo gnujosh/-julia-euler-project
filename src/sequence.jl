@@ -49,8 +49,8 @@ end
 """
 Return a list of products of numbers with "ndigit" digits.
 """
-function unique_products_of_ndigits(ndigits::Integer)::Array{Integer}
-    maxnum = 10^ndigits - 1
-    minnum = 10^(ndigits - 1)
+function unique_products_of_ndigits(n_digits::Integer)::Array{Integer}
+    maxnum = 10^n_digits - 1
+    minnum = 10^(n_digits - 1)
     return [i * j for i in minnum:maxnum for j in minnum:maxnum if i < j]
 end

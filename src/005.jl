@@ -11,7 +11,7 @@ include("factorization.jl")
 # count of each prime factor, and then take the max number of that prime factor
 # for each number.  Multiply all the factors (exponentiated by their max number)
 # to ensure the result is evenly divisible.
-function p005solution(n::Integer=20)::Integer
+function p005solution(n::Integer=2)::Integer
     counts = zeros(Integer, n)
     for i in 2:n
         subcounts = Dict{Integer, Integer}()

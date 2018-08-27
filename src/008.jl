@@ -29,8 +29,10 @@ include("Problems.jl")
 
 # Use Julia built-ins to convert string into individual numbers then multiply
 # every adjacent chunck.
-function p008solution(number::String, adjacent::Integer)::Integer
+function p008solution(number::String="23", adjacent::Integer=1)::Integer
     array = map(x->parse(Int8, x), split(number, ""))
+    # Below, another way to split, using digits function, not quite as fast
+    # array = digits(Int8, parse(BigInt, input))
     products = map(x -> prod(array[x:x+adjacent-1]), 1:(length(array)-adjacent+1))
     return maximum(products)
 end

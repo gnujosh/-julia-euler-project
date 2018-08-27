@@ -32,7 +32,7 @@ include("Problems.jl")
 # Simply cycle through rows, cols, and diagonals to get max product for adjacent
 # numbers.  Not hard, just book-keeping.  Integer values don't promote to
 # BigInt, so force BigInt.
-function p011solution(matrix::Array{BigInt, 2}, adjacent::Integer)::BigInt
+function p011solution(matrix::Array{BigInt, 2}=ones(BigInt, 2, 2), adjacent::Integer=2)::BigInt
     nrows, ncols = size(matrix)
     maxprod = 0
 

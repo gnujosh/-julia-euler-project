@@ -27,15 +27,15 @@ include("sequence.jl")
 # to be a new digit every 5 numbers or so.  We use that to estimate the upper
 # bound for how far to generate numbers.
 #
-# map(x -> floor(Integer, log10(x)) + 1, fibonacci_count(48))
+# map(x -> ndigits(x), fibonacci_count(48))
 # [1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 3, 3, 3, 3, 3, 4, 4, 4, 4, 5, 5, 5, 5, 5,
 #  6, 6, 6, 6, 6, 7, 7, 7, 7, 7, 8, 8, 8, 8, 9, 9, 9, 9, 9, 10, 10, 10, 10, 10]
-function p025solution(n_digits::Integer=1000)::Integer
+function p025solution(n_digits::Integer=1)::Integer
 
     fibs = fibonacci_bound(BigInt(10)^(n_digits-1))
     n = length(fibs) + 1
 
-    if floor(Integer, log10(fibs[end])) + 1 < n_digits
+    if ndigits(fibs[end]) < n_digits
         return n + 1
     else
         return n

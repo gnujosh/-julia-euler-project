@@ -14,12 +14,14 @@ include("Problems.jl")
 
 # Use sort then map and collect to order names then convert to char array then
 # difference from the char 'A'.
-function p022_solution(path::String)::Integer
+function p022_solution(path::String="")::Integer
     all_names = Vector{String}()
-    open(path) do file
-        for row in eachline(file)
-            rownames = split(row, ",")
-            append!(all_names, [n[2:end-1] for n in rownames]) # Remove quotes
+    if isfile(path)
+        open(path) do file
+            for row in eachline(file)
+                rownames = split(row, ",")
+                append!(all_names, [n[2:end-1] for n in rownames]) # Remove quotes
+            end
         end
     end
     sort!(all_names)

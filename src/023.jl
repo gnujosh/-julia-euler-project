@@ -21,7 +21,7 @@ include("Problems.jl")
 # Uses the same approach as in 021.jl to build up array of factor sums, testing
 # for abundant numbers and storing them.  Then filters out sums of abundant
 # numbers.
-function p023solution(n::Integer=28_123)::Integer
+function p023solution(n::Integer=4)::Integer
     abundant_numbers = Array{Integer, 1}()
 
     factor_sums = ones(Integer, n)

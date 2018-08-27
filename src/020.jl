@@ -8,7 +8,7 @@
 include("Problems.jl")
 
 # Trivial with Julia's built-in factorial and digits functions.
-function p020solution(n::Integer=100)::Integer
+function p020solution(n::Integer=2)::Integer
     return sum(digits(factorial(BigInt(n))))
 end
 

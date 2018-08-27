@@ -6,7 +6,7 @@
 include("Problems.jl")
 
 # Memoization type solution to store intermediate results.
-function p015solution(n::Integer=20)::Integer
+function p015solution(n::Integer=2)::Integer
     counts = zeros(Integer, n+1, n+1)
     counts[1, :] .= 1  # There's only one way down.
     counts[:, 1] .= 1  # There's only one way to the right.

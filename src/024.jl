@@ -14,7 +14,7 @@ include("Problems.jl")
 # way 1,000,000 is through 10!.  We can extract the digit, find the remainder
 # after subtracting from 1,000,000, then repeat for 9! then 8!, etc, extracting
 # all the digits.
-function p024solution(n::Integer=1_000_000)::String
+function p024solution(n::Integer=1)::String
 
     num_per_digit = factorial(10)
 

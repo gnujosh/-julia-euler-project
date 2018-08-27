@@ -36,7 +36,7 @@ include("pyramid.jl")
 
 # Convert a string representation of a pyramid of numbers into an integer
 # representation.
-function pyramid_from_string(input::String)::Vector{Vector{Integer}}
+function pyramid_from_string(input::String="32")::Vector{Vector{Integer}}
     pyramid = Vector{Vector{Integer}}()
     for row in split(input, "\n")
         if length(row) > 0

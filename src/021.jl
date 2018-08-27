@@ -24,7 +24,7 @@ include("factorization.jl")
 #                                     6
 #                                           7
 #                                                 8
-function p021solution_fast(n::Integer=10_000)::Integer
+function p021solution_fast(n::Integer=10)::Integer
     amicable_numbers = Array{Integer, 1}()
 
     factor_sums = ones(Integer, n)
@@ -43,7 +43,7 @@ end
 
 # Repeatedly uses factors function and cache values so you don't
 # recalculate.  Store in a set so you get unique values.
-function p021solution_slow(n::Integer=10_000)::Integer
+function p021solution_slow(n::Integer=10)::Integer
     factor_sums = zeros(Integer, 5*n) # Initialize to some large size
 
     amicable_numbers = Set{Integer}()

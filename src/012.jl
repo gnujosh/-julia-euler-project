@@ -22,8 +22,8 @@ include("Problems.jl")
 include("factorization.jl")
 
 # Cycle through triangular numbers, starting with a initial value using a high
-# value starting point and incrementing the triangular number by one.
-function p012solution_one(numdivisors::Integer=500)::Integer
+# value starting point and incrementing the triangular number each iteration.
+function p012solution_one(numdivisors::Integer=1)::Integer
 
     i = 10000
     # Uses the sum of series equation, allowing it to start at a larger number
@@ -38,7 +38,7 @@ end
 
 # Cycle through triangular numbers, setting the triangular number at each step
 # using the sum of series equation.
-function p012solution_two(numdivisors::Integer=500)::Integer
+function p012solution_two(numdivisors::Integer=1)::Integer
 
     i = 10000
     trinumber::Integer = 1

@@ -18,9 +18,9 @@ import Dates
 include("Problems.jl")
 
 # Trivial with the Dates module
-function p019solution(first_year::Integer=1901, last_year::Integer=2000)::Integer
+function p019solution(first_year::Integer=1901, last_year::Integer=1901)::Integer
     total_days = 0
-    for y in 1901:2000
+    for y in first_year:last_year
         for m in 1:12
             if Dates.dayofweek(Dates.Date("$y-$m-1")) == 7
                 total_days += 1

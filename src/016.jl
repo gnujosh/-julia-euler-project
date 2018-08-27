@@ -6,7 +6,7 @@ include("Problems.jl")
 include("sequence.jl")
 
 # Simple with Julia's built-in BigInt and the digits function.
-function p016solution(mantissa::Integer=2, exponent::Integer=1000)::Integer
+function p016solution(mantissa::Integer=2, exponent::Integer=3)::Integer
     return sum(digits(BigInt(mantissa) ^ exponent))
 end
 

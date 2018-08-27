@@ -13,7 +13,7 @@ include("Problems.jl")
 include("digit.jl")
 
 # Convert integer to string, remove hyphens and spaces, then add up lengths.
-function p017solution(n::Integer=1000)::Integer
+function p017solution(n::Integer=2)::Integer
 
     total_length = 0
     for i = 1:n

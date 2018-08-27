@@ -6,7 +6,7 @@ include("Problems.jl")
 include("sequence.jl")
 
 # Run Seive of Eratosthenes to get primes and sum them.
-function p010solution(n::Integer=1_999_999)::Integer
+function p010solution(n::Integer=3)::Integer
     return sum(seive_eratosthenes(n))
 end
 

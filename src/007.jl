@@ -8,7 +8,7 @@ include("sequence.jl")
 
 # Run Seive of Eratosthenes to get primes.  Estimate the value of the n'th
 # prime to be ~x, where x / log(x) < n.
-function p007solution(n::Integer=10_001)::Integer
+function p007solution(n::Integer=3)::Integer
 
     # Roughly estimate the value of the n'th prime
     x = floor(Integer, n^(1.2))

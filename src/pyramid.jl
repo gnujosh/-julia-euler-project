@@ -1,7 +1,7 @@
 """
 Returns the max value of a path through a pyramid of integers.
 """
-function max_path_through_pyramid(pyramid::Vector{Vector{Integer}})::Integer
+function max_path_through_pyramid(pyramid::Vector{Vector{Integer}}=Vector{Vector{Integer}}([Vector{Integer}([1])]))::Integer
 
     pyramid_best_paths = Vector{Vector{Integer}}()
     for i = 1:length(pyramid)

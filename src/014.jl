@@ -19,7 +19,7 @@ include("Problems.jl")
 
 # Memoization type solution to store intermediate results without recursion.
 # It does end up recalculating some solutions multiple times.
-function p014solution_memoize(num::Integer=500)::Integer
+function p014solution_memoize(num::Integer=3)::Integer
     cache = Dict{Integer, Integer}(1 => 1)
     for k = 2:num
         n = k
@@ -62,7 +62,7 @@ end
 
 # Recursive type solution to store intermediate results.  Theoretically
 # recalculates no numbers, but recursion adds an overhead.
-function p014solution_recurse(num::Integer=500)::Integer
+function p014solution_recurse(num::Integer=3)::Integer
     cache = Dict{Integer, Integer}(1 => 1)
     for k = num:-1:2
         if !haskey(cache, k)
