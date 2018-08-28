@@ -19,13 +19,13 @@ function p005solution(n::Integer=2)::Integer
             subcounts[j] = get(subcounts, j, 0) + 1
         end
         for k in subcounts
-            counts[k[1]] = max(counts[k[1]], k[2])
+            @inbounds counts[k[1]] = max(counts[k[1]], k[2])
         end
     end
 
     result = 1
     for i in 2:n
-        if counts[i] > 0
+        @inbounds if counts[i] > 0
             result = result * (i ^ counts[i])
         end
     end

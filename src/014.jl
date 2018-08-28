@@ -32,9 +32,15 @@ function p014solution_memoize(num::Integer=3)::Integer
             end
             i += 1
         end
-        cache[k] = get(cache, n, 0) + i - 1
+        @inbounds cache[k] = get(cache, n, 0) + i - 1
     end
 
+    # Find max value
+    return maxdictvalue(cache)
+end
+
+# Return maximum value in dictionary
+function maxdictvalue(cache::Dict{Integer, Integer})::Integer
     # Find max value
     maxkey, maxvalue = 0, 0
     for (key, value) in cache
@@ -42,7 +48,6 @@ function p014solution_memoize(num::Integer=3)::Integer
             maxkey, maxvalue = key, value
         end
     end
-
     return maxvalue
 end
 
@@ -52,9 +57,9 @@ function collatz!(cache::Dict{Integer, Integer}, n::Integer)::Integer
         return cache[n]
     else
         if n % 2 == 0
-            cache[n] = collatz!(cache, fld(n, 2)) + 1
+            @inbounds cache[n] = collatz!(cache, fld(n, 2)) + 1
         else
-            cache[n] = collatz!(cache, 3 * n + 1) + 1
+            @inbounds cache[n] = collatz!(cache, 3 * n + 1) + 1
         end
         return cache[n]
     end
@@ -71,14 +76,7 @@ function p014solution_recurse(num::Integer=3)::Integer
     end
 
     # Find max value
-    maxkey, maxvalue = 0, 0
-    for (key, value) in cache
-        if value > maxvalue
-            maxkey, maxvalue = key, value
-        end
-    end
-
-    return maxvalue
+    return maxdictvalue(cache)
 end
 
 p014 = Problems.Problem(Dict("recurse" => p014solution_recurse,

@@ -38,13 +38,13 @@ function p011solution(matrix::Array{BigInt, 2}=ones(BigInt, 2, 2), adjacent::Int
 
     # Check rows
     for row = 1:nrows
-        maxrowval = maximum(map(x -> prod(matrix[row, x:x+adjacent-1]), 1:(ncols-adjacent+1)))
+        maxrowval = mapreduce(x -> prod(matrix[row, x:x+adjacent-1]), max, 1:(ncols-adjacent+1))
         maxprod = max(maxprod, maxrowval)
     end
 
     # Check cols
     for col = 1:ncols
-        maxcolval = maximum(map(x -> prod(matrix[x:x+adjacent-1, col]), 1:(nrows-adjacent+1)))
+        maxcolval = mapreduce(x -> prod(matrix[x:x+adjacent-1, col]), max, 1:(nrows-adjacent+1))
         maxprod = max(maxprod, maxcolval)
     end
 
@@ -55,6 +55,8 @@ function p011solution(matrix::Array{BigInt, 2}=ones(BigInt, 2, 2), adjacent::Int
             for i = 1:adjacent-1
                 localval *= matrix[row + i, col + i]
             end
+            # mapreduce is actually a little slower here
+            #localval = mapreduce(i->matrix[row+i, col+i], *, 0:adjacent-1)
             maxprod = max(maxprod, localval)
         end
     end
@@ -64,8 +66,10 @@ function p011solution(matrix::Array{BigInt, 2}=ones(BigInt, 2, 2), adjacent::Int
         for col = adjacent:ncols
             localval = matrix[row, col]
             for i = 1:adjacent-1
-                localval *= matrix[row + i, col - i]
+               localval *= matrix[row + i, col - i]
             end
+            # mapreduce is actually a little slower here
+            #localval = mapreduce(i->matrix[row+i, col-i], *, 0:adjacent-1)
             maxprod = max(maxprod, localval)
         end
     end

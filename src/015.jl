@@ -14,7 +14,7 @@ function p015solution(n::Integer=2)::Integer
     # Count for a cell is the sum of the counts above and to the left.
     for i = 2:n+1
         for j = 2:n+1
-            counts[i, j] = counts[i-1, j] + counts[i, j-1]
+            @inbounds counts[i, j] = counts[i-1, j] + counts[i, j-1]
         end
     end
 

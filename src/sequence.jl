@@ -21,11 +21,9 @@ function fibonacci_count(n::Integer=20)::Array{BigInt}
     b = BigInt(2)
     fibs = zeros(BigInt, n)
     fibs[1] = 1
-    index = 2
-    while index <= n
+    for i in 2:n
         (a, b) = (b, a + b)
-        @inbounds fibs[index] = a
-        index += 1
+        @inbounds fibs[i] = a
     end
     return fibs
 end

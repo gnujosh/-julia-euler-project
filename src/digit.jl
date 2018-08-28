@@ -13,7 +13,7 @@ operations (floor, mod) to pull out digits
 """
 function ispalindrome_integer(n::Integer)::Bool
 
-    @simd for d in (ndigits(n) - 1):-2:1
+    for d in (ndigits(n) - 1):-2:1
         if fld(n, 10^d) != mod(n, 10)
             return false
         end
@@ -30,7 +30,7 @@ function.
 function ispalindrome(n::Integer)::Bool
     ds = digits(n)
     for d in 1:fld(length(ds), 2)
-        if ds[d] == ds[length(ds)-d]
+        @inbounds if ds[d] == ds[length(ds)-d]
             return false
         end
     end

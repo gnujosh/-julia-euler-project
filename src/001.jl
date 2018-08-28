@@ -6,7 +6,7 @@
 include("Problems.jl")
 
 # Brute force approach, loop through checking for multiples.
-function p001solution_slow(n::Integer=9)::Integer
+function p001solution_loop(n::Integer=9)::Integer
     total_sum = 0
     @simd for i in 1:n
         if i % 3 == 0 || i % 5 == 0
@@ -18,13 +18,13 @@ end
 
 # Faster approach, sum of real numbers in a sequence is n*(n+1)/2, just scale
 # and remove double counts.
-function p001solution_fast(n::Integer=9)::Integer
+function p001solution_closedform(n::Integer=9)::Integer
     return  3 * (div(n, 3) + 1)  * div(n, 3 * 2) +
             5 * (div(n, 5) + 1)  * div(n, 5 * 2) -
            15 * (div(n, 15) + 1) * div(n, 15 * 2)
 end
 
-p001 = Problems.Problem(Dict("fast" => p001solution_fast,
-                             "slow" => p001solution_slow))
+p001 = Problems.Problem(Dict("closed form" => p001solution_closedform,
+                             "loop" => p001solution_loop))
 
 Problems.benchmark(p001, 999)

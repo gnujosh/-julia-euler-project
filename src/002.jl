@@ -14,7 +14,7 @@ include("sequence.jl")
 function p002solution_one(n::Integer=3)::Integer
     fibs = fibonacci_bound(BigInt(n))
     running_sum = 0
-    for val in fibs
+    @simd for val in fibs
         if val % 2 == 0
             running_sum += val
         end

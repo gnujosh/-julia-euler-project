@@ -23,20 +23,22 @@ include("Problems.jl")
 # Could be made slightly faster to consider only prime values between 2 and n.
 function p026solution_regex(n::Integer=3)::Integer
     numdigits = 2500
+    startvalue = BigInt(10)^numdigits
+
     regexstring = r"(\d+?)\1"
     lengths = zeros(Integer, n)
 
-    for i = 3:2:n
-        stringnum = string(fld(BigInt(10)^numdigits,i))
-        lengths[i] = mapreduce(m->length(m.captures[1]), max, eachmatch(regexstring, stringnum))
+    @simd for i = 3:2:n
+        stringnum = string(fld(startvalue, i))
+        @inbounds lengths[i] = mapreduce(m->length(m.captures[1]), max, eachmatch(regexstring, stringnum))
     end
 
     return findmax(lengths)[2]
 end
 
-# Cycles through a sequence of numbers building up larger numbers until it sees
-# one it has seen before.  Could be made slightly faster to consider only prime
-# values between 2 and n.
+# Cycles through a sequence of digits building up and storing larger numbers
+# until it sees one it has seen before.  Could be made slightly faster to
+# consider only prime values between 2 and n.
 function p026solution_repeats(n::Integer=3)::Integer
     totalmax = 0
     maxind = 1
@@ -48,8 +50,8 @@ function p026solution_repeats(n::Integer=3)::Integer
             if r == 0
                 break
             end
-            push!(seennumbers, r)
             r = 10 * (r % i)
+            push!(seennumbers, r)
             j += 1
         end
 
@@ -65,4 +67,4 @@ end
 p026 = Problems.Problem(Dict("regex" => p026solution_regex,
                              "repeats" => p026solution_repeats))
 
-Problems.benchmark(p026, 1000)
+Problems.benchmark(p026, 10)
