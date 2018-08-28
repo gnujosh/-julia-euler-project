@@ -25,9 +25,10 @@
 include("Problems.jl")
 include("sequence.jl")
 
-# We know that the b values must be primes
+# We know that the b values must be primes, and after experimenting a bit we
+# see that a values are all negative.  Estimate upper bound of primes then
+# cycle through and store the ones with the longest n sequence.
 function p027solution(abound::Integer=5, bbound::Integer=5)::Integer
-
     bs = seive_eratosthenes(bbound)
     primes = Set{Integer}(seive_eratosthenes(3*max(abound, bbound)))
     maxtuple = Tuple{Integer, Integer}((1, 1))
