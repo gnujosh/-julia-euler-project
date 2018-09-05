@@ -13,6 +13,7 @@
 # powers of their digits.
 
 include("Problems.jl")
+include("sequence.jl")
 
 # Brute force, but precalculate the digit powers.  Just use a guess for number
 # ranges to consider.
@@ -25,25 +26,6 @@ function p030solution_brute(pow::Integer=2)::Integer
         end
     end
     return total
-end
-
-# Create a multiset (combinations with replacement, order doesn't matter).
-# Uses a recursive solution to build up a full set.
-function multiset_combination!(storage::Array{Int8,2},
-                                digit_index::Integer,
-                                index::Integer,
-                                rstart::Integer,
-                                rend::Integer)
-    if digit_index == 0
-        storage[:, index + 1] = storage[:, index]
-        return index + 1
-    end
-
-    for i in rstart:rend
-        storage[digit_index, index] = i
-        index = multiset_combination!(storage, digit_index - 1, index, i, rend)
-    end
-    return index
 end
 
 # Helper function which creates multiset combinations for digits.

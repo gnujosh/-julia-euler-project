@@ -52,3 +52,24 @@ function unique_products_of_ndigits(n_digits::Integer)::Array{Integer}
     minnum = 10^(n_digits - 1)
     return [i * j for i in minnum:maxnum for j in minnum:maxnum if i < j]
 end
+
+"""
+Return a multiset (combinations with replacement, order doesn't matter).  Uses
+a recursive solution to build up a full set of indexes.
+"""
+function multiset_combination!(storage::Array{Int8,2},
+                               digit_index::Integer,
+                               index::Integer,
+                               rstart::Integer,
+                               rend::Integer)
+    if digit_index == 0
+        storage[:, index + 1] = storage[:, index]
+        return index + 1
+    end
+
+    for i in rstart:rend
+        storage[digit_index, index] = i
+        index = multiset_combination!(storage, digit_index - 1, index, i, rend)
+    end
+    return index
+end
