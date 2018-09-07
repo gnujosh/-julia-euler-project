@@ -27,7 +27,7 @@ function p031solution_single(units::Array{Integer}=ones(Integer, 1), value::Inte
     return countcoins1(cache, units, length(units), value)
 end
 
-# Uses no recursion, solution from https://projecteuler.net/thread=31
+# Uses no recursion, solution from https://projecteuler.net/thread=31.
 function p031solution_dp(units::Array{Integer}=ones(Integer, 1), value::Integer=5)::Integer
     ways = zeros(Integer, value)
     ways[1] = 1
@@ -38,7 +38,6 @@ function p031solution_dp(units::Array{Integer}=ones(Integer, 1), value::Integer=
     end
     return ways[value]
 end
-
 
 # Most straightforward recursive solution.
 function countcoins2(cache::Array{Integer,2}, units::Array{Integer}, coin::Integer, amount::Integer)::Integer
@@ -58,7 +57,6 @@ function countcoins2(cache::Array{Integer,2}, units::Array{Integer}, coin::Integ
     cache[amount, coin] = val
     return val
 end
-
 
 # Simple refactoring, less total recursive calls.
 function countcoins1(cache::Array{Integer,2}, units::Array{Integer}, coin::Integer, amount::Integer)::Integer
