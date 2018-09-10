@@ -26,7 +26,7 @@ end
 # Use Seive of Eratosthenes to get primes, store in set, then cycle through
 # them creating circular shifts and checking whether all shifts are prime.  If
 # so, perform some set magic to move those primes into the verified set and
-# remove from the potential primes set.
+# remove from the potential circular primes set.
 function p035solution(n::Integer=100)::Integer
     primes = Set{Integer}(seive_eratosthenes(n))
     verified = Set{Integer}()

@@ -37,7 +37,7 @@ function p004solution_integer_fast(n_digits::Integer=1)::Integer
     maxval = 0
     for i in minnum:maxnum
         for j in minnum:maxnum
-            if j > i && ispalindrome(i*j)
+            if j > i && ispalindrome_integer(i*j)
                 maxval = max(maxval, i*j)
             end
         end
