@@ -11,7 +11,6 @@ include("Problems.jl")
 # factorials of digits.
 function p034solution()::Integer
     facs = map(factorial, 0:9) # precompute digit factorials
-
     sums = 0
     for i in 11:99999 # Arbitrary upper bound?
         if mapreduce(x -> facs[x + 1], +, digits(i)) == i
