@@ -14,7 +14,7 @@ include("sequence.jl")
 function circularnumbers(n::Integer)::Array{Integer}
     digs = digits(n)
     numdigits = length(digs)
-    multipliers = [10^k for k in 0:numdigits-1]
+    multipliers = 10 .^ (0:numdigits-1)
 
     circular_nums = Integer[]
     for i in 1:numdigits-1

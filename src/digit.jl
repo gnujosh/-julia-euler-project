@@ -24,6 +24,14 @@ function ispalindrome_integer(n::Integer)::Bool
 end
 
 """
+Returns the digit at index, e.g., digitindex(421513, 4) = 5.
+"""
+function digitindex(n::Integer, index::Integer)::Integer
+    digs = digits(n)
+    return digs[length(digs) - index + 1]
+end
+
+"""
 Returns whether a number is a palindrome or not, using Julia's built-in digits
 function.
 """
