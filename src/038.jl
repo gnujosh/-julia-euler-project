@@ -3,6 +3,7 @@
 # 192 × 1 = 192
 # 192 × 2 = 384
 # 192 × 3 = 576
+#
 # By concatenating each product we get the 1 to 9 pandigital, 192384576. We
 # will call 192384576 the concatenated product of 192 and (1,2,3)
 #
@@ -14,7 +15,6 @@
 # the concatenated product of an integer with (1,2, ... , n) where n > 1?
 
 include("Problems.jl")
-include("digit.jl")
 
 # Simple using Julia's builtin digits function.
 function p038solution(n::Integer=10)::Integer
