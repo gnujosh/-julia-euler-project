@@ -3,7 +3,7 @@
 # Find the sum of all the primes below two million.
 
 include("Problems.jl")
-include("sequence.jl")
+include("prime.jl")
 
 # Run Seive of Eratosthenes to get primes and sum them.
 function p010solution(n::Integer=3)::Integer

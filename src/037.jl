@@ -9,7 +9,7 @@
 # NOTE: 2, 3, 5, and 7 are not considered to be truncatable primes.
 
 include("Problems.jl")
-include("sequence.jl")
+include("prime.jl")
 
 # Helper function to generate an array of truncated integers given an input
 # integer.

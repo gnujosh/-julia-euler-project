@@ -4,7 +4,7 @@
 # What is the 10,001st prime number?
 
 include("Problems.jl")
-include("sequence.jl")
+include("prime.jl")
 
 # Run Seive of Eratosthenes to get primes.  Estimate the value of the n'th
 # prime to be ~x, where x / log(x) < n.

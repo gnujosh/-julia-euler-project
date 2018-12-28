@@ -29,22 +29,6 @@ function fibonacci_count(n::Integer=20)::Array{BigInt}
 end
 
 """
-Implements the Seive of Eratosthenes to return all prime numbers up "n".
-https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes
-"""
-function seive_eratosthenes(n::Integer=500)::Array{Integer}
-    primes = trues(n)
-    primes[1] = false
-
-    for i in 2:floor(Integer, sqrt(n))
-        if primes[i]
-            @inbounds primes[(i+i):i:n] .= false
-        end
-    end
-    return findall(primes)
-end
-
-"""
 Return a list of products of numbers with "ndigit" digits.
 """
 function unique_products_of_ndigits(n_digits::Integer)::Array{Integer}

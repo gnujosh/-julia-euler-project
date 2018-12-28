@@ -7,7 +7,7 @@
 # How many circular primes are there below one million?
 
 include("Problems.jl")
-include("sequence.jl")
+include("prime.jl")
 
 # Helper function to generate an array of circular shifts given an input
 # integer.

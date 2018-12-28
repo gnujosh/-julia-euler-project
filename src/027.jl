@@ -23,7 +23,7 @@
 # starting with n=0.
 
 include("Problems.jl")
-include("sequence.jl")
+include("prime.jl")
 
 # We know that the b values must be primes, and after experimenting a bit we
 # see that a values are all negative.  Estimate upper bound of primes then
