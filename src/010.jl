@@ -2,12 +2,11 @@
 #
 # Find the sum of all the primes below two million.
 
-include("Problems.jl")
-include("prime.jl")
+using ProjectEulerSolutions
 
-# Run Seive of Eratosthenes to get primes and sum them.
+# Run Sieve of Eratosthenes to get primes and sum them.
 function p010solution(n::Integer=3)::Integer
-    return sum(seive_eratosthenes(n))
+    return sum(sieve_eratosthenes(n))
 end
 
 p010 = Problems.Problem(p010solution)

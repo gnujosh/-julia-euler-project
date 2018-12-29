@@ -18,8 +18,7 @@
 # would take over twenty billion years to check them all. There is an efficient
 # algorithm to solve it. ;o)
 
-include("Problems.jl")
-include("pyramid.jl")
+using ProjectEulerSolutions
 
 # Convert a string representation of a pyramid of numbers from a file into an
 # integer representation.

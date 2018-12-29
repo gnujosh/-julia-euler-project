@@ -6,7 +6,7 @@
 # There exists exactly one Pythagorean triplet for which a + b + c = 1000.
 # Find the product abc.
 
-include("Problems.jl")
+using ProjectEulerSolutions
 
 # Cycle through (from n down to n/2) to find sets of a and b that satisfy
 # a + b + c = n.

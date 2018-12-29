@@ -16,7 +16,7 @@
 # Find the sum of all the positive integers which cannot be written as the sum
 # of two abundant numbers.
 
-include("Problems.jl")
+using ProjectEulerSolutions
 
 # Uses the same approach as in 021.jl to build up array of factor sums, testing
 # for abundant numbers and storing them.  Then filters out sums of abundant

@@ -4,27 +4,30 @@
 #
 # What is the largest n-digit pandigital prime that exists?
 
-include("Problems.jl")
-include("prime.jl")
+using ProjectEulerSolutions
+
+# Helper function for testing primality
+function testprime(vals::Array)
+    return isprime(sum(vals .* (10 .^ (0:length(vals)-1))))
+end
 
 # Creates pandigital permutations, and tests for primality.  Pandigitals of
 # length 8 and 9 are divisible by 3 and thus cannot be prime.
 function p041solution_permutation()::Integer
     for n in 7:-1:1
-        primeval = first_permuted_prime(collect(1:n), 10 .^ (0:n-1))
-        if primeval > 0
-            return primeval
-        end
+        matrix = zeros(Integer, 0)
+        permutation_matrix!(collect(1:n), matrix, testprime)
+        primes = transpose(10 .^ (0:n-1)) * reshape(matrix, (n, fld(length(matrix), n)))
+        return maximum(primes)
     end
     return -1
 end
 
 # Brute force solution, checking every prime up to 7,654,321, since all
 # pandigitals of length 8 and 9 are divisible by 3 and thus cannot be prime.
-function p041solution_seive()::Integer
-
+function p041solution_sieve()::Integer
     n = 7_654_321
-    primes = seive_eratosthenes(n)
+    primes = sieve_eratosthenes(n)
     max_pandigital_prime = 2143
     lower_bound = 1e6
 
@@ -39,7 +42,7 @@ function p041solution_seive()::Integer
     return max_pandigital_prime
 end
 
-p041 = Problems.Problem(Dict("permutation" => p041solution_permutation,
-                             "seive" => p041solution_seive))
+p041 = Problems.Problem(Dict("Permutation" => p041solution_permutation,
+                             "Sieve" => p041solution_sieve))
 
 Problems.benchmark(p041)

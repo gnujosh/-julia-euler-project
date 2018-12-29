@@ -3,7 +3,7 @@
 #
 # How many such routes are there through a 20×20 grid?
 
-include("Problems.jl")
+using ProjectEulerSolutions
 
 # Memoization type solution to store intermediate results.
 function p015solution(n::Integer=2)::Integer

@@ -7,7 +7,7 @@
 # 1×£1 + 1×50p + 2×20p + 1×5p + 1×2p + 3×1p
 # How many different ways can £2 be made using any number of coins?
 
-include("Problems.jl")
+using ProjectEulerSolutions
 
 # Recursive solution count coin combinations.  In general, the idea is to
 # consider each coin type and see how many ways there are to make a sum with

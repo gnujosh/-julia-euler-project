@@ -3,7 +3,7 @@
 #
 # Find the sum of all the multiples of 3 or 5 below 1000.
 
-include("Problems.jl")
+using ProjectEulerSolutions
 
 # Brute force approach, loop through checking for multiples.
 function p001solution_loop(n::Integer=9)::Integer
@@ -19,12 +19,15 @@ end
 # Faster approach, sum of real numbers in a sequence is n*(n+1)/2, just scale
 # and remove double counts.
 function p001solution_closedform(n::Integer=9)::Integer
-    return  3 * (div(n, 3) + 1)  * div(n, 3 * 2) +
-            5 * (div(n, 5) + 1)  * div(n, 5 * 2) -
-           15 * (div(n, 15) + 1) * div(n, 15 * 2)
+    n3  = div(n, 3)
+    n5  = div(n, 5)
+    n15 = div(n, 15)
+    return  3 * div(n3 * (n3 + 1), 2) +
+            5 * div(n5 * (n5 + 1), 2) -
+           15 * div(n15 * (n15 + 1), 2)
 end
 
-p001 = Problems.Problem(Dict("closed form" => p001solution_closedform,
-                             "loop" => p001solution_loop))
+p001 = Problems.Problem(Dict("Closed form" => p001solution_closedform,
+                             "Loop" => p001solution_loop))
 
 Problems.benchmark(p001, 999)

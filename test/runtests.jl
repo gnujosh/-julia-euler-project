@@ -1,3 +1,7 @@
-using ProjectEulerSolutions
+push!(LOAD_PATH, "../src")
 
-println("here")
+for test in vcat(1:43, [67])
+	println("Problem ", test, ":")
+    include("../src/" * lpad(test, 3, '0') * ".jl")
+    println()
+end

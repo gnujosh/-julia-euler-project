@@ -27,7 +27,7 @@
 # What is the greatest product of four adjacent numbers in the same direction
 # (up, down, left, right, or diagonally) in the 20×20 grid?
 
-include("Problems.jl")
+using ProjectEulerSolutions
 
 # Simply cycle through rows, cols, and diagonals to get max product for adjacent
 # numbers.  Not hard, just book-keeping.  Integer values don't promote to

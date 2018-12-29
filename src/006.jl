@@ -12,7 +12,7 @@
 # Find the difference between the sum of the squares of the first one hundred
 # natural numbers and the square of the sum.
 
-include("Problems.jl")
+using ProjectEulerSolutions
 
 # Brute force solution, using Julia built-ins.
 function p006solution_sequence(n::Integer=1)::Integer
@@ -26,7 +26,7 @@ function p006solution_closedform(n::Integer=1)::Integer
     return (n*(n+1)/2)^2 - (n*(n+1)*(2n+1)/6)
 end
 
-p006 = Problems.Problem(Dict("closed form" => p006solution_closedform,
-                             "sequence" => p006solution_sequence))
+p006 = Problems.Problem(Dict("Closed form" => p006solution_closedform,
+                             "Sequence" => p006solution_sequence))
 
 Problems.benchmark(p006, 100)

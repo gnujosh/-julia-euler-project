@@ -11,8 +11,7 @@
 # HINT: Some products can be obtained in more than one way so be sure to only
 # include it once in your sum.
 
-include("Problems.jl")
-include("factorization.jl")
+using ProjectEulerSolutions
 
 # Uses factorization to find sets of digits from the products.  Shortcuts full
 # comparisons when the total number of digits is incorrect.
@@ -70,7 +69,7 @@ function p032solution_multipliers(n::Integer=5)::Integer
     return sum(Set(products))
 end
 
-p032 = Problems.Problem(Dict("factors" => p032solution_factors,
-                             "multipliers" => p032solution_multipliers))
+p032 = Problems.Problem(Dict("Factors" => p032solution_factors,
+                             "Multipliers" => p032solution_multipliers))
 
 Problems.benchmark(p032, 9)

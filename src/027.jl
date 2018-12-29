@@ -22,15 +22,14 @@
 # that produces the maximum number of primes for consecutive values of n,
 # starting with n=0.
 
-include("Problems.jl")
-include("prime.jl")
+using ProjectEulerSolutions
 
 # We know that the b values must be primes, and after experimenting a bit we
 # see that a values are all negative.  Estimate upper bound of primes then
 # cycle through and store the ones with the longest n sequence.
 function p027solution(abound::Integer=5, bbound::Integer=5)::Integer
-    bs = seive_eratosthenes(bbound)
-    primes = Set{Integer}(seive_eratosthenes(3*max(abound, bbound)))
+    bs = sieve_eratosthenes(bbound)
+    primes = Set{Integer}(sieve_eratosthenes(3*max(abound, bbound)))
     maxtuple = Tuple{Integer, Integer}((1, 1))
     maxn = 1
     mval = 0

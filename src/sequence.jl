@@ -1,3 +1,9 @@
+export fibonacci_bound
+export fibonacci_count
+export unique_products_of_ndigits
+export multiset_combination!
+export permutation_matrix!
+
 """
 Returns an array of the Fibonacci numbers up to a bound n.
 """
@@ -56,4 +62,21 @@ function multiset_combination!(storage::Array{Int8,2},
         index = multiset_combination!(storage, digit_index - 1, index, i, rend)
     end
     return index
+end
+
+"""
+Create array of permutations for which valid_func is true.
+"""
+function permutation_matrix!(elementlist::Array, matrix::Array, valid_func, k::Integer=1)
+    if k == length(elementlist)
+        if valid_func(elementlist)
+            append!(matrix, elementlist)
+        end
+    else
+        for i in k:length(elementlist)
+            elementlist[k], elementlist[i] = elementlist[i], elementlist[k]
+            permutation_matrix!(elementlist, matrix, valid_func, k + 1)
+            elementlist[k], elementlist[i] = elementlist[i], elementlist[k]
+        end
+    end
 end

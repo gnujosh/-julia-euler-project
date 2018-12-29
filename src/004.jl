@@ -3,9 +3,7 @@
 #
 # Find the largest palindrome made from the product of two 3-digit numbers.
 
-include("Problems.jl")
-include("digit.jl")
-include("sequence.jl")
+using ProjectEulerSolutions
 
 # Treat numbers as strings and test by reversing them.
 function p004solution_string(n_digits::Integer=1)::Integer
@@ -45,8 +43,8 @@ function p004solution_integer_fast(n_digits::Integer=1)::Integer
     return maxval
 end
 
-p004 = Problems.Problem(Dict("string reversal" => p004solution_string,
-                             "integer math" => p004solution_integer,
-                             "integer math fast" => p004solution_integer_fast))
+p004 = Problems.Problem(Dict("String reversal" => p004solution_string,
+                             "Integer math" => p004solution_integer,
+                             "Integer math fast" => p004solution_integer_fast))
 
 Problems.benchmark(p004, 3)

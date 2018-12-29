@@ -12,8 +12,7 @@
 # Find the sum of all the numbers that can be written as the sum of fifth
 # powers of their digits.
 
-include("Problems.jl")
-include("sequence.jl")
+using ProjectEulerSolutions
 
 # Brute force, but precalculate the digit powers.  Just use a guess for number
 # ranges to consider.
@@ -56,7 +55,7 @@ function p030solution_multiset(pow::Integer=2)::Integer
     return total
 end
 
-p030 = Problems.Problem(Dict("brute force" => p030solution_brute,
-                             "multiset" => p030solution_multiset))
+p030 = Problems.Problem(Dict("Brute force" => p030solution_brute,
+                             "Multiset" => p030solution_multiset))
 
 Problems.benchmark(p030, 5)

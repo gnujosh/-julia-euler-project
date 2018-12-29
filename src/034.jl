@@ -5,7 +5,7 @@
 #
 # Note: as 1! = 1 and 2! = 2 are not sums they are not included.
 
-include("Problems.jl")
+using ProjectEulerSolutions
 
 # Precompute one digit factorials, use mapreduce to quickly calculate sums of
 # factorials of digits.

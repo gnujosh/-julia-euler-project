@@ -9,8 +9,7 @@
 # letters. The use of "and" when writing out numbers is in compliance with
 # British usage.
 
-include("Problems.jl")
-include("digit.jl")
+using ProjectEulerSolutions
 
 # Convert integer to string, remove hyphens and spaces, then add up lengths.
 function p017solution(n::Integer=2)::Integer

@@ -10,8 +10,7 @@
 #
 # d1 × d10 × d100 × d1000 × d10000 × d100000 × d1000000
 
-include("Problems.jl")
-include("digit.jl")
+using ProjectEulerSolutions
 
 # Estimate the number of digits of the positive integer that n lies in, then
 # calculate the positive integer that n lies in, then calculate what digit of

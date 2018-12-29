@@ -15,7 +15,7 @@
 #
 # NOTE: Once the chain starts the terms are allowed to go above one million.
 
-include("Problems.jl")
+using ProjectEulerSolutions
 
 # Memoization type solution to store intermediate results without recursion.
 # It does end up recalculating some solutions multiple times.
@@ -36,11 +36,11 @@ function p014solution_memoize(num::Integer=3)::Integer
     end
 
     # Find max value
-    return maxdictvalue(cache)
+    return maxdictkey(cache)
 end
 
 # Return maximum value in dictionary
-function maxdictvalue(cache::Dict{Integer, Integer})::Integer
+function maxdictkey(cache::Dict{Integer, Integer})::Integer
     # Find max value
     maxkey, maxvalue = 0, 0
     for (key, value) in cache
@@ -48,7 +48,7 @@ function maxdictvalue(cache::Dict{Integer, Integer})::Integer
             maxkey, maxvalue = key, value
         end
     end
-    return maxvalue
+    return maxkey
 end
 
 # Dynamic programming type solution to store intermediate results
@@ -76,10 +76,10 @@ function p014solution_recurse(num::Integer=3)::Integer
     end
 
     # Find max value
-    return maxdictvalue(cache)
+    return maxdictkey(cache)
 end
 
-p014 = Problems.Problem(Dict("recurse" => p014solution_recurse,
-                             "memoize" => p014solution_memoize))
+p014 = Problems.Problem(Dict("Recurse" => p014solution_recurse,
+                             "Memoize" => p014solution_memoize))
 
 Problems.benchmark(p014, 1_000_000)

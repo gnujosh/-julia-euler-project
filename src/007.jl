@@ -3,10 +3,9 @@
 #
 # What is the 10,001st prime number?
 
-include("Problems.jl")
-include("prime.jl")
+using ProjectEulerSolutions
 
-# Run Seive of Eratosthenes to get primes.  Estimate the value of the n'th
+# Run Sieve of Eratosthenes to get primes.  Estimate the value of the n'th
 # prime to be ~x, where x / log(x) < n.
 function p007solution(n::Integer=3)::Integer
 
@@ -16,7 +15,7 @@ function p007solution(n::Integer=3)::Integer
         x += n
     end
 
-    res = seive_eratosthenes(x)
+    res = sieve_eratosthenes(x)
     return res[n]
 end
 

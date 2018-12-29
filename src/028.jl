@@ -12,7 +12,7 @@
 # What is the sum of the numbers on the diagonals in a 1001 by 1001 spiral
 # formed in the same way?
 
-include("Problems.jl")
+using ProjectEulerSolutions
 
 # Create and sum the sequence of corner values, then increment.
 function p028solution_increment(n::Integer=5)::Integer
@@ -41,8 +41,8 @@ function p028solution_closedform(n::Integer=5)::Integer
     return fld(4 * n^3 + 3 * n^2 + 8 * n - 9, 6)
 end
 
-p028 = Problems.Problem(Dict("incremental" => p028solution_increment,
-                             "broadcast"   => p028solution_broadcast,
-                             "closed form" => p028solution_closedform))
+p028 = Problems.Problem(Dict("Incremental" => p028solution_increment,
+                             "Broadcast"   => p028solution_broadcast,
+                             "Closed form" => p028solution_closedform))
 
 Problems.benchmark(p028, 1001)

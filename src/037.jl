@@ -8,8 +8,7 @@
 #
 # NOTE: 2, 3, 5, and 7 are not considered to be truncatable primes.
 
-include("Problems.jl")
-include("prime.jl")
+using ProjectEulerSolutions
 
 # Helper function to generate an array of truncated integers given an input
 # integer.
@@ -31,12 +30,12 @@ function truncatednumbers(n::Integer)::Array{Integer}
     return trunc_nums
 end
 
-# Use Seive of Eratosthenes to get primes, store in set, then cycle through
+# Use Sieve of Eratosthenes to get primes, store in set, then cycle through
 # them creating truncated numbers and checking whether all truncated numbers
 # are prime.  If so, move the prime into the verified set.
 function p037solution(n::Integer=10)::Integer
 
-    primes = Set{Integer}(seive_eratosthenes(1_000_000))
+    primes = Set{Integer}(sieve_eratosthenes(1_000_000))
     verified = Set{Integer}()
 
     num_truncs = 0

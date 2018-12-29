@@ -1,3 +1,7 @@
+export first_permuted_prime
+export isprime
+export sieve_eratosthenes
+
 """
 Creates permutations of numbers and returns when the first prime value is reached.
 """
@@ -57,10 +61,10 @@ function isprime(n)
 end
 
 """
-Implements the Seive of Eratosthenes to return all prime numbers up "n".
+Implements the Sieve of Eratosthenes to return all prime numbers up "n".
 https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes
 """
-function seive_eratosthenes(n::Integer=500)::Array{Integer}
+function sieve_eratosthenes(n::Integer=500)::Array{Integer}
     primes = trues(n)
     primes[1] = false
 

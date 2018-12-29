@@ -6,8 +6,7 @@
 #
 # How many circular primes are there below one million?
 
-include("Problems.jl")
-include("prime.jl")
+using ProjectEulerSolutions
 
 # Helper function to generate an array of circular shifts given an input
 # integer.
@@ -23,12 +22,12 @@ function circularnumbers(n::Integer)::Array{Integer}
     return circular_nums
 end
 
-# Use Seive of Eratosthenes to get primes, store in set, then cycle through
+# Use Sieve of Eratosthenes to get primes, store in set, then cycle through
 # them creating circular shifts and checking whether all shifts are prime.  If
 # so, perform some set magic to move those primes into the verified set and
 # remove from the potential circular primes set.
 function p035solution(n::Integer=100)::Integer
-    primes = Set{Integer}(seive_eratosthenes(n))
+    primes = Set{Integer}(sieve_eratosthenes(n))
     verified = Set{Integer}()
 
     for prime in primes

@@ -2,8 +2,7 @@
 #
 # What is the largest prime factor of the number 600851475143?
 
-include("Problems.jl")
-include("factorization.jl")
+using ProjectEulerSolutions
 
 # Call the prime factors function, return the last.
 function p003solution(n::Integer=3)::Integer

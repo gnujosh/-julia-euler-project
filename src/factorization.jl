@@ -1,3 +1,6 @@
+export factors
+export primefactors
+
 """
 Return sorted list of unique factors for a number n.
 """

@@ -2,8 +2,7 @@
 #
 # What is the sum of the digits of the number 2^1000?
 
-include("Problems.jl")
-include("sequence.jl")
+using ProjectEulerSolutions
 
 # Simple with Julia's built-in BigInt and the digits function.
 function p016solution(mantissa::Integer=2, exponent::Integer=3)::Integer

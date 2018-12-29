@@ -1,3 +1,9 @@
+export ispalindrome_string
+export ispalindrome_integer
+export ispalindrome
+export digitindex
+export integer_to_string
+
 """
 Returns whether a number is a palindrome or not, using String operations
 to pull out digits.
@@ -24,14 +30,6 @@ function ispalindrome_integer(n::Integer)::Bool
 end
 
 """
-Returns the digit at index, e.g., digitindex(421513, 4) = 5.
-"""
-function digitindex(n::Integer, index::Integer)::Integer
-    digs = digits(n)
-    return digs[length(digs) - index + 1]
-end
-
-"""
 Returns whether a number is a palindrome or not, using Julia's built-in digits
 function.
 """
@@ -45,6 +43,14 @@ function ispalindrome(n::Integer)::Bool
     end
 
     return true
+end
+
+"""
+Returns the digit at index, e.g., digitindex(421513, 4) = 5.
+"""
+function digitindex(n::Integer, index::Integer)::Integer
+    digs = digits(n)
+    return digs[length(digs) - index + 1]
 end
 
 """

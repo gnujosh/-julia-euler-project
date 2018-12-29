@@ -15,7 +15,7 @@
 # (1 Jan 1901 to 31 Dec 2000)?
 
 import Dates
-include("Problems.jl")
+using ProjectEulerSolutions
 
 # Trivial with the Dates module
 function p019solution(first_year::Integer=1901, last_year::Integer=1901)::Integer

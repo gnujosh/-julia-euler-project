@@ -8,8 +8,7 @@
 #
 # Evaluate the sum of all the amicable numbers under 10000.
 
-include("Problems.jl")
-include("factorization.jl")
+using ProjectEulerSolutions
 
 # Actually build up an array of factors, testing for amicable numbers smaller
 # than the current index.  Building up is done with a double loop, adding like
@@ -24,7 +23,7 @@ include("factorization.jl")
 #                                     6
 #                                           7
 #                                                 8
-function p021solution_fast(n::Integer=10)::Integer
+function p021solution_incremental(n::Integer=10)::Integer
     amicable_numbers = Array{Integer, 1}()
 
     factor_sums = ones(Integer, n)
@@ -43,7 +42,7 @@ end
 
 # Repeatedly uses factors function and cache values so you don't
 # recalculate.  Store in a set so you get unique values.
-function p021solution_slow(n::Integer=10)::Integer
+function p021solution_factors(n::Integer=10)::Integer
     factor_sums = zeros(Integer, 5*n) # Initialize to some large size
 
     amicable_numbers = Set{Integer}()
@@ -67,7 +66,7 @@ function p021solution_slow(n::Integer=10)::Integer
     return sum(amicable_numbers)
 end
 
-p021 = Problems.Problem(Dict("fast" => p021solution_fast,
-                             "slow" => p021solution_slow))
+p021 = Problems.Problem(Dict("Incremental" => p021solution_incremental,
+                             "Factors" => p021solution_factors))
 
 Problems.benchmark(p021, 10_000)

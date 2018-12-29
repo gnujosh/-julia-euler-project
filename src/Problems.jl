@@ -1,3 +1,5 @@
+export Problems
+
 module Problems
 
 struct Problem
@@ -13,10 +15,11 @@ function benchmark(p::Problem, x...)
     end
     sol = 0
     for problem in p.solutions
-        println(string(problem[1], ":"))
+        println("  ", problem[1], ":")
+        print("  ")
         @time sol = problem[2](x...)
     end
-    println(string("Answer: ", sol))
+    println("  Answer: ", sol)
 end
 
 end

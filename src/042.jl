@@ -12,7 +12,7 @@
 # containing nearly two-thousand common English words, how many are triangle
 # words?
 
-include("Problems.jl")
+using ProjectEulerSolutions
 
 function p042solution()::Integer
 

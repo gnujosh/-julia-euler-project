@@ -18,12 +18,11 @@
 # What is the value of the first triangle number to have over five hundred
 # divisors?
 
-include("Problems.jl")
-include("factorization.jl")
+using ProjectEulerSolutions
 
 # Cycle through triangular numbers, starting with a initial value using a high
 # value starting point and incrementing the triangular number each iteration.
-function p012solution_one(numdivisors::Integer=1)::Integer
+function p012solution_increment(numdivisors::Integer=1)::Integer
 
     i = 10000
     # Uses the sum of series equation, allowing it to start at a larger number
@@ -38,7 +37,7 @@ end
 
 # Cycle through triangular numbers, setting the triangular number at each step
 # using the sum of series equation.
-function p012solution_two(numdivisors::Integer=1)::Integer
+function p012solution_sum(numdivisors::Integer=1)::Integer
 
     i = 10000
     trinumber::Integer = 1
@@ -51,6 +50,7 @@ function p012solution_two(numdivisors::Integer=1)::Integer
     return trinumber
 end
 
-p012 = Problems.Problem(Dict("one" => p012solution_one, "two" => p012solution_two))
+p012 = Problems.Problem(Dict("Increment" => p012solution_increment,
+                             "Sum" => p012solution_sum))
 
 Problems.benchmark(p012, 500)

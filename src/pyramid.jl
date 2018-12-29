@@ -1,3 +1,5 @@
+export max_path_through_pyramid
+
 """
 Returns the max value of a path through a pyramid of integers.
 """

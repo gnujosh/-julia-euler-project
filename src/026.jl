@@ -17,7 +17,7 @@
 # Find the value of d < 1000 for which 1/d contains the longest recurring cycle
 # in its decimal fraction part.
 
-include("Problems.jl")
+using ProjectEulerSolutions
 
 # Solve using greedy regex to pull out the longest repeated sequence of digits.
 # Could be made slightly faster to consider only prime values between 2 and n.
@@ -47,11 +47,8 @@ function p026solution_repeats(n::Integer=3)::Integer
         r = 10
         j = 0
         while ! in(r, seennumbers)
-            if r == 0
-                break
-            end
-            r = 10 * (r % i)
             push!(seennumbers, r)
+            r = 10 * (r % i)
             j += 1
         end
 
@@ -64,7 +61,7 @@ function p026solution_repeats(n::Integer=3)::Integer
     return maxind
 end
 
-p026 = Problems.Problem(Dict("regex" => p026solution_regex,
-                             "repeats" => p026solution_repeats))
+p026 = Problems.Problem(Dict("Regex" => p026solution_regex,
+                             "Repeats" => p026solution_repeats))
 
-Problems.benchmark(p026, 10)
+Problems.benchmark(p026, 1000)

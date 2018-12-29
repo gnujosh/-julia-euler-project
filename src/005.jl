@@ -4,8 +4,7 @@
 # What is the smallest positive number that is evenly divisible by all of the
 # numbers from 1 to 20?
 
-include("Problems.jl")
-include("factorization.jl")
+using ProjectEulerSolutions
 
 # Find the number of prime factors for each number between 2 and n.  Store the
 # count of each prime factor, and then take the max number of that prime factor

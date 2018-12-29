@@ -6,8 +6,7 @@
 # (Please note that the palindromic number, in either base, may not include
 # leading zeros.)
 
-include("Problems.jl")
-include("digit.jl")
+using ProjectEulerSolutions
 
 # Simple using Julia's builtin bitstring and parse functions (with BigInt).
 function p036solution(n::Integer=10)::Integer

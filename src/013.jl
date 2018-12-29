@@ -1,7 +1,7 @@
 # Work out the first ten digits of the sum of the following one-hundred 50-digit
 # numbers.
 
-include("Problems.jl")
+using ProjectEulerSolutions
 
 # This is made trivial by using Julia's BigInt builtin.
 function p013solution(input::Array{BigInt,1}=ones(BigInt,3), numdigits::Integer=1)::Integer

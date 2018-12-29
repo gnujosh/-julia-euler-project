@@ -25,7 +25,7 @@
 # Find the thirteen adjacent digits in the 1000-digit number that have the
 # greatest product. What is the value of this product?
 
-include("Problems.jl")
+using ProjectEulerSolutions
 
 # Use Julia built-ins to convert string into individual numbers then multiply
 # every adjacent chunck.

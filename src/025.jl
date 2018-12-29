@@ -20,8 +20,7 @@
 # What is the index of the first term in the Fibonacci sequence to contain 1000
 # digits?
 
-include("Problems.jl")
-include("sequence.jl")
+using ProjectEulerSolutions
 
 # There's a pattern in the number of digits in Fibonacci numbers.  It appears
 # to be a new digit every 5 numbers or so.  We use that to estimate the upper

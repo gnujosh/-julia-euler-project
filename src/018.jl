@@ -31,8 +31,7 @@
 # containing one-hundred rows; it cannot be solved by brute force, and requires
 # a clever method! ;o)
 
-include("Problems.jl")
-include("pyramid.jl")
+using ProjectEulerSolutions
 
 # Convert a string representation of a pyramid of numbers into an integer
 # representation.

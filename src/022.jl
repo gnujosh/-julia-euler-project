@@ -10,7 +10,7 @@
 #
 # What is the total of all the name scores in the file?
 
-include("Problems.jl")
+using ProjectEulerSolutions
 
 # Use sort then map and collect to order names then convert to char array then
 # difference from the char 'A'.

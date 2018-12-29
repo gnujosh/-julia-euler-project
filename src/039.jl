@@ -5,7 +5,7 @@
 #
 # For which value of p ≤ 1000, is the number of solutions maximised?
 
-include("Problems.jl")
+using ProjectEulerSolutions
 
 # Simple approach that cycles through legal ranges for a and b and storing
 # counts of integer values of c.  Solution is the max of that array.  An even
@@ -27,4 +27,4 @@ end
 
 p039 = Problems.Problem(p039solution)
 
-Problems.benchmark(p039, 10000)
+Problems.benchmark(p039, 1000)

@@ -10,7 +10,7 @@
 # If the product of these four fractions is given in its lowest common terms,
 # find the value of the denominator.
 
-include("Problems.jl")
+using ProjectEulerSolutions
 
 # Cycle through numbers using Julia's built-in digits, and store the fractions
 # as rationals.  Julia's built-in rationals solve the common denominator

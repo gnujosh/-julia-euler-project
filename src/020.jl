@@ -5,7 +5,7 @@
 #
 # Find the sum of the digits in the number 100!
 
-include("Problems.jl")
+using ProjectEulerSolutions
 
 # Trivial with Julia's built-in factorial and digits functions.
 function p020solution(n::Integer=2)::Integer
