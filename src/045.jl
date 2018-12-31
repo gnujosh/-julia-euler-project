@@ -13,7 +13,7 @@ using ProjectEulerSolutions
 
 # Calculate different pentagonal and hexagonal numbers, since every hexagonal
 # number is also a triangular number.  Then find the intersection
-function p045solution(n::Integer=166)::Integer
+function p045solution_set(n::Integer=166)::Integer
 
     pentvals = collect(165:n)
     hexvals = collect(143:n)
@@ -23,6 +23,23 @@ function p045solution(n::Integer=166)::Integer
     return maximum(intersect(pentset, hexset))
 end
 
-p045 = Problems.Problem(p045solution)
+# Ignoring triangular numbers, solving for when the pentagonal and hexagonal
+# equations are equal gives a "Diophantine equation" of the form 
+# axx + bxy + cyy + dx + ey + f = 0.  Plugging in, we can get a recursive
+# solution from https://www.alpertron.com.ar/QUAD.HTM and iterate through a
+# single step.  This idea came from https://projecteuler.net/thread=45
+function p045solution_diophantine(n::Integer=0)::Integer
+    # x0 = 1
+    # y0 = 1
+    x1 = 165
+    y1 = 143
+    x2 = 97 * x1 + 112 * y1 - 44
+    y2 = 84 * x1 + 97 * y1 - 38
+
+    return y2 * (2 * y2 - 1) # convert back to hexagonal number from index
+end
+
+p045 = Problems.Problem(Dict("Set" => p045solution_set,
+                             "Diophantine" => p045solution_diophantine))
 
 Problems.benchmark(p045, 50_000)
