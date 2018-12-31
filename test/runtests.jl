@@ -1,6 +1,11 @@
 push!(LOAD_PATH, "../src")
 
-for test in vcat(1:43, [67])
+tests = ARGS
+if length(ARGS) == 0
+    tests = vcat(1:45, [67])
+end
+
+for test in tests
 	println("Problem ", test, ":")
     include("../src/" * lpad(test, 3, '0') * ".jl")
     println()
