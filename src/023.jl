@@ -21,28 +21,32 @@ using ProjectEulerSolutions
 # Uses the same approach as in 021.jl to build up array of factor sums, testing
 # for abundant numbers and storing them.  Then filters out sums of abundant
 # numbers.
-function p023solution(n::Integer=4)::Integer
+function p023solution(n::Integer=10)::Integer
     abundant_numbers = Array{Integer, 1}()
 
+    # Store abundant_numbers
     factor_sums = ones(Integer, n)
     for i = 2:n
-        for j = 2*i:i:n
-            factor_sums[j] += i
-        end
+        factor_sums[2*i:i:n] .+= i
         if i < factor_sums[i]
             push!(abundant_numbers, i)
         end
     end
 
-    # Loop over pairs of abundant numbers and filter them.
-    not_sum_of_abundant_numbers = trues(fld(3*n, 2))
-    for a in abundant_numbers
-        if a < n/2
-            not_sum_of_abundant_numbers[abundant_numbers .+ a] .= false
+    # Check for sums of abundant_numbers
+    sum_of_abundant_numbers = falses(n)
+    for i in 1:length(abundant_numbers)
+        for j in i:length(abundant_numbers)
+            h = abundant_numbers[i] + abundant_numbers[j]
+            if h > n
+                break
+            end
+            sum_of_abundant_numbers[h] = true
         end
     end
 
-    return sum((1:n)[not_sum_of_abundant_numbers[1:n]])
+    # Invert the bitarray to get values that are not sums of abundant numbers
+    return sum(findall(.!sum_of_abundant_numbers))
 end
 
 p023 = Problems.Problem(p023solution)
