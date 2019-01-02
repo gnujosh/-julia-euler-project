@@ -10,11 +10,12 @@
 
 using ProjectEulerSolutions
 
-# 
+# Use Sieve of Eratosthenes and then loop through looking for primes that
+# satisfy the specified criterion.
 function p049solution(n::Integer=100)::Integer
-    t = time_ns()
+
     primes = Set(sieve_eratosthenes(n))
-    t = time_ns()
+
     for p in primes
         if p > 1488 && p + 3330 in primes && p + 6660 in primes
             d = Set(digits(p))
