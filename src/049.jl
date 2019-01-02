@@ -19,7 +19,7 @@ function p049solution(n::Integer=100)::Integer
     for p in primes
         if p > 1488 && p + 3330 in primes && p + 6660 in primes
             d = Set(digits(p))
-            if d == Set(digits(p + 3330)) && d == Set(digits(p + 3330))
+            if d == Set(digits(p + 3330)) && d == Set(digits(p + 6660))
                 return p * 1e8 + (p + 3330) * 1e4 + p + 6660
             end
         end
