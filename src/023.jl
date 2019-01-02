@@ -40,8 +40,9 @@ function p023solution(n::Integer=10)::Integer
             h = abundant_numbers[i] + abundant_numbers[j]
             if h > n
                 break
+            else
+                sum_of_abundant_numbers[h] = true
             end
-            sum_of_abundant_numbers[h] = true
         end
     end
 
