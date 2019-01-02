@@ -2,7 +2,7 @@ push!(LOAD_PATH, "../src")
 
 tests = ARGS
 if length(ARGS) == 0
-    tests = vcat(1:48, [67])
+    tests = vcat(1:49, [67])
 end
 
 for test in tests
