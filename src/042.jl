@@ -16,7 +16,7 @@ using ProjectEulerSolutions
 
 function p042solution()::Integer
 
-    path = "../data/p042_words.txt"
+    path = "data/p042_words.txt"
 
     # Store reasonable set of triangular numbers
     max_triangular_number = 26*20

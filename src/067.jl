@@ -37,6 +37,6 @@ end
 
 p067 = Problems.Problem(max_path_through_pyramid)
 
-input_path = "../data/p067_triangle.txt"
+input_path = "data/p067_triangle.txt"
 
 Problems.benchmark(p067, pyramid_from_file(input_path))
