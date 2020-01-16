@@ -10,10 +10,11 @@ end
 
 function benchmark(p::Problem, x...)
     key = collect(keys(p.solutions))[1]
-    for k in collect(keys(p.solutions))
-        p.solutions[k]()
-    end
     sol = 0
+    # Initial run with default small value
+    for k in collect(keys(p.solutions))
+        sol = p.solutions[k]()
+    end
     for problem in p.solutions
         println("  ", problem[1], ":")
         print("  ")

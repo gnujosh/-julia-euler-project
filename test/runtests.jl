@@ -1,8 +1,8 @@
-push!(LOAD_PATH, "../src")
+push!(LOAD_PATH, "src")
 
 tests = ARGS
 if length(ARGS) == 0
-    files = readdir("../src")
+    files = readdir("src")
 
     tests = Array{Integer,1}()
     for file in files
