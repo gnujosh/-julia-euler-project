@@ -1,6 +1,8 @@
 export ispalindrome_string
 export ispalindrome_integer
 export ispalindrome
+export reverse_sum
+export reverse_sum_integer
 export digitindex
 export integer_to_string
 
@@ -18,12 +20,13 @@ Returns whether a number is a palindrome or not, using normal integer
 operations (floor, mod) to pull out digits.
 """
 function ispalindrome_integer(n::Integer)::Bool
-
-    for d in (ndigits(n) - 1):-2:1
-        if fld(n, 10^d) != mod(n, 10)
+    N = ndigits(n) - 1
+    for d in N:-2:1
+        pow = convert(typeof(n), 10)^d
+        if fld(n, pow) != mod(n, 10)
             return false
         end
-        n = fld(n - fld(n, 10^d) * 10^d, 10)
+        n = fld(n - fld(n, pow) * pow, 10)
     end
 
     return true
@@ -35,6 +38,9 @@ function.
 """
 function ispalindrome(n::Integer)::Bool
     ds = digits(n)
+    if ds[1] == 0
+        return false
+    end
     numdigits = length(ds)
     for d in 1:fld(numdigits, 2)
         @inbounds if ds[d] != ds[numdigits-d+1]
@@ -44,6 +50,34 @@ function ispalindrome(n::Integer)::Bool
 
     return true
 end
+
+"""
+Returns the sum of the number and its reverse using Julia builtins.
+"""
+function reverse_sum(n::Integer)::Integer
+    digs = digits(n)
+    n_digits = length(digs)
+    multipliers = convert(typeof(n), 10) .^ (n_digits-1:-1:0)
+    return n + sum(multipliers .* digs)
+end
+
+"""
+Returns the sum of the number and its reverse using mods and divs instead of
+Julia built-ins.
+"""
+function reverse_sum_integer(n::Integer)::Integer
+    n_digits = ndigits(n) - 1
+
+    pow = convert(typeof(n), 10)^n_digits
+    s = n
+    for d in 1:n_digits
+        s += (pow * mod(n, 10))
+        n = div(n, 10)
+        pow = div(pow, 10)
+    end
+    return s + n
+end
+
 
 """
 Returns the digit at index, e.g., digitindex(421513, 4) = 5.
