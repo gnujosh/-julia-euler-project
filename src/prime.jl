@@ -64,7 +64,7 @@ end
 Implements the Sieve of Eratosthenes to return all prime numbers up "n".
 https://en.wikipedia.org/wiki/Sieve_of_Eratosthenes
 """
-function sieve_eratosthenes(n::Integer=500)::Array{Integer}
+function sieve_eratosthenes(n::Integer=500, nstart::Integer=2)::Array{Integer}
     primes = trues(n)
     primes[1] = false
 
@@ -73,5 +73,6 @@ function sieve_eratosthenes(n::Integer=500)::Array{Integer}
             @inbounds primes[(i+i):i:n] .= false
         end
     end
+    primes[1:nstart-1] .= false
     return findall(primes)
 end
