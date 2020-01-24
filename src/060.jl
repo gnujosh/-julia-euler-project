@@ -19,7 +19,7 @@ using ProjectEulerSolutions
 # set faster.  A recursive solution would look cleaner, but it wouldn't
 # necessarily be faster.
 #
-# This seems like the kind of thing yo ucan do by building a graph with edges
+# This seems like the kind of thing you can do by building a graph with edges
 # representing legal concatenated pairs and then solving for the fully connected
 # cliques of size 5.
 function p060solution(n::Integer=1_000)::Integer
