@@ -1,5 +1,6 @@
 export factors
 export primefactors
+export totient
 
 """
 Return sorted list of unique factors for a number n.
@@ -41,4 +42,24 @@ function primefactors(n::Integer)::Array{Integer}
     end
 
     return sort(factors)
+end
+
+"""
+Euler's totient function returns the number of positive integers up to n that
+are releatively prime to n.  Pull out the prime factors f and take a produce of
+n and all (1 - 1/f).
+"""
+function totient(n::Integer)::Integer
+    factors = primefactors(n)
+    last_prime = 0
+    result = Float64(n)
+    for f in factors 
+        if f == last_prime
+            continue
+        else
+            result *= (1 - 1 / f)
+            last_prime = f 
+        end
+    end
+    return Integer(round(result))
 end
