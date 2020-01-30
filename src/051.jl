@@ -13,16 +13,24 @@
 
 using ProjectEulerSolutions
 
-# 
+# Use Seive to get set of primes, then make a list of possible indexes to
+# substitute (we only go up to 6 digits).  Sustitute with new digits and cycle
+# through testing for primality until a set of 8 occurs.
 function p051solution(n::Integer=100)::Integer
 
     primes = sieve_eratosthenes(n)
     primeset = Set(primes)
     maxnumprimes = 0
     minprime = n
+    checked = Set{Integer}()
     for p in primes
+        # Don't need to check primes that have already been tested
+        if p in checked
+            continue
+        end
         numdigs = max(2, ndigits(p))
-
+        mult = (10 .^ (0:numdigs-1))
+        # Can't change an even number of digits
         if numdigs == 2
             ss = [[2]]
         elseif numdigs == 3
@@ -35,16 +43,17 @@ function p051solution(n::Integer=100)::Integer
             ss = [[2], [3], [4], [5], [6], [2,3,4], [2,3,5], [2,3,6], [2,4,5], [2,4,6], [2,5,6], [2,3,4,5,6]]
         end
         if p > 10
-            # don't use the "last" digit since it would have to include even
+            # Don't use the "last" digit since it would have to include even
             # numbers, which aren't prime
             for s in ss
                 d = digits(p)
                 numprimes = 0
                 minp = 0
-                for n = 0:9
-                    d[s] .= n
-                    newp = sum(d .* (10 .^ (0:numdigs-1)))
-                    if newp in primeset && ndigits(newp) == numdigs
+                for j = 0:9
+                    d[s] .= j
+                    newp = sum(d .* mult)
+                    if isprime(newp)
+                        push!(checked, newp)
                         numprimes += 1
                         if minp == 0
                             minp = newp
