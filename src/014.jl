@@ -65,6 +65,31 @@ function collatz!(cache::Dict{Integer, Integer}, n::Integer)::Integer
     end
 end
 
+# Same type of answer, but with no caching.  Sometimes the "smartest" solution
+# isn't always the fastest.
+function p014solution_nocache(num::Integer=3)::Integer
+    longest = 0
+    max_terms = 0
+    for i in 1:num
+        n = i
+        nterms = 1
+        while n != 1
+            nterms += 1
+            if nterms > max_terms
+                max_terms = nterms
+                longest = i
+            end
+            if n % 2 == 0
+                n = fld(n, 2)
+            else
+                n = 3 * n + 1
+            end
+        end
+    end
+
+    return longest
+end
+
 # Recursive type solution to store intermediate results.  Theoretically
 # recalculates no numbers, but recursion adds an overhead.
 function p014solution_recurse(num::Integer=3)::Integer
@@ -80,6 +105,7 @@ function p014solution_recurse(num::Integer=3)::Integer
 end
 
 p014 = Problems.Problem(Dict("Recurse" => p014solution_recurse,
-                             "Memoize" => p014solution_memoize))
+                             "Memoize" => p014solution_memoize,
+                             "No Cache" => p014solution_nocache))
 
 Problems.benchmark(p014, 1_000_000)
