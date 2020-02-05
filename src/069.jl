@@ -46,11 +46,12 @@ function p069solution_factors(n::Integer=1_000)::Integer
 
     primes = sieve_eratosthenes(30)
     index = 2
-    
-    while prod(primes[1:index]) < n
+    p = primes[1]
+    while p * primes[index] < n
+        p *= primes[index]
         index += 1
     end
-    return prod(primes[1:index-1])
+    return p
 end
 
 
